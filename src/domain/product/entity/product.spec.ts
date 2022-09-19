@@ -27,16 +27,16 @@ describe("Product unit tests", () => {
 
       const product = new Product("1", "", -5);
 
-    }).toThrowError("product: Name is mandatory,customer: Price must be greater than zero,");
+    }).toThrowError("product: Name is mandatory,product: Price must be greater than zero,");
   });
 
   it("should throw price when is invalid", () => {
 
     expect(() => {
 
-      const product = new Product("1", "Product 1", - 100);
+      const product = new Product("1", "Product 1", -100);
 
-    }).toThrowError("customer: Price must be greater than zero,");
+    }).toThrowError("product: Price must be greater than zero,");
   });
 
 
@@ -68,7 +68,7 @@ describe("Product unit tests", () => {
 
       product.changePrice(-5);
 
-    }).toThrowError("customer: Price must be greater than zero,");
+    }).toThrowError("product: Price must be greater than zero,");
   });
 
 });
