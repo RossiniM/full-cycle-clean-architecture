@@ -7,10 +7,10 @@ describe("Customer unit tests", () => {
 
     expect(() => {
 
-      let address = new Address("camp noua", 78232, "4545", "CityHall");
-      let customer = new Customer("", "Jhon", address);
+      const address = new Address("camp noua", 78232, "4545", "CityHall");
+      const customer = new Customer("", "Jhon", address);
 
-    }).toThrowError("ID is required");
+    }).toThrowError("customer: id is mandatory,");
   });
 
 
@@ -18,11 +18,11 @@ describe("Customer unit tests", () => {
   it("should throw err when name is empty", () => {
 
     expect(() => {
-      //3 A(Arrange, Act, Assert)
-      let address = new Address("camp noua", 78232, "4545", "CityHall");
-      let customer = new Customer("1", "", address);
+      // 3 A(Arrange, Act, Assert)
+      const address = new Address("camp noua", 78232, "4545", "CityHall");
+      const customer = new Customer("1", "", address);
 
-    }).toThrowError("Name is required");
+    }).toThrowError("customer: Name is mandatory,");
   });
 
 
@@ -30,30 +30,30 @@ describe("Customer unit tests", () => {
 
     expect(() => {
 
-      let address = new Address("camp noua", 78232, "4545", "CityHall");
-      let customer = new Customer("1", "Jhon", address);
+      const address = new Address("camp noua", 78232, "4545", "CityHall");
+      const customer = new Customer("1", "Jhon", address);
       customer.changeName("")
 
-    }).toThrowError("Name is required");
+    }).toThrowError("customer: Name is mandatory,");
   });
 
   it("should change name", () => {
 
-    //Arrange
-    let address = new Address("camp noua", 78232, "4545", "CityHall");
-    let customer = new Customer("1", "Jhon", address);
+    // Arrange
+    const address = new Address("camp noua", 78232, "4545", "CityHall");
+    const customer = new Customer("1", "Jhon", address);
 
-    //Act
+    // Act
     customer.changeName("Jane");
 
-    //Assert
+    // Assert
     expect(customer.name).toBe("Jane")
   });
 
 
   it("should toggle", () => {
-    let address = new Address("camp noua", 78232, "4545", "CityHall");
-    let customer = new Customer("1", "Jhon", address);
+    const address = new Address("camp noua", 78232, "4545", "CityHall");
+    const customer = new Customer("1", "Jhon", address);
 
     customer.inactivate();
 
@@ -64,8 +64,8 @@ describe("Customer unit tests", () => {
   });
 
   it("should add reward points", () => {
-    let address = new Address("camp noua", 78232, "4545", "CityHall");
-    let customer = new Customer("1", "Jhon", address);
+    const address = new Address("camp noua", 78232, "4545", "CityHall");
+    const customer = new Customer("1", "Jhon", address);
     expect(customer.rewardPoints).toBe(0);
 
 

@@ -56,6 +56,6 @@ describe("Unit test - create customer usecase", () => {
 
         expect( () => {
           return useCase.execute(inputInvalid);
-        }).rejects.toThrowError("Name is required")
+        }).rejects.toThrowError("customer: Name is mandatory,")
     });
 });

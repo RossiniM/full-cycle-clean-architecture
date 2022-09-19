@@ -73,7 +73,7 @@ export default class CustomerRepository implements CustomerRepositoryInterface {
         customerModels.city
       );
 
-      let customer = new Customer(customerModels.id, customerModels.name, address);
+      const customer = new Customer(customerModels.id, customerModels.name, address);
       customer.addRewardPoints(customerModels.rewardPoints);
 
       return customer;
