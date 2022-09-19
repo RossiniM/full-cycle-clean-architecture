@@ -6,6 +6,6 @@ export const productValid = {
 
 export const invalidProduct = {
     id: "123e#232",
-    name: "productValid",
+    name: "",
     price: -50
 }
