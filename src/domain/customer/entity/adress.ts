@@ -4,9 +4,9 @@ export default class Address {
   _zip: string = "";
   _city: string = "";
 
-  constructor(street: string, number: number, zip: string, city: string) {
+  constructor(street: string, n: number, zip: string, city: string) {
     this._street = street;
-    this._number = number;
+    this._number = n;
     this._zip = zip;
     this._city = city;
 
