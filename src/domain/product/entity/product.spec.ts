@@ -9,7 +9,7 @@ describe("Product unit tests", () => {
 
       const product = new Product("", "Product 1", 100);
 
-    }).toThrowError("ID is required");
+    }).toThrowError("product: Id is mandatory,");
   });
 
   it("should throw err when name is empty", () => {
@@ -18,7 +18,16 @@ describe("Product unit tests", () => {
 
       const product = new Product("1", "", 100);
 
-    }).toThrowError("Name is required");
+    }).toThrowError("product: Name is mandatory,");
+  });
+
+  it("should throw err when name is empty and value is negative", () => {
+
+    expect(() => {
+
+      const product = new Product("1", "", -5);
+
+    }).toThrowError("product: Name is mandatory,customer: Price must be greater than zero,");
   });
 
   it("should throw price when is invalid", () => {
@@ -27,23 +36,26 @@ describe("Product unit tests", () => {
 
       const product = new Product("1", "Product 1", - 100);
 
-    }).toThrowError("Price is invalid");
+    }).toThrowError("customer: Price must be greater than zero,");
   });
 
 
   it("should change name ", () => {
 
     const product = new Product("1", "Product 1", 100);
+
     product.changeName("productName");
+
     expect(product.name).toBe("productName");
 
   });
 
 
   it("should change price to valid value ", () => {
-
     const product = new Product("1", "Product 1", 100);
+
     product.changePrice(200);
+
     expect(product.price).toBe(200);
 
   });
@@ -56,9 +68,7 @@ describe("Product unit tests", () => {
 
       product.changePrice(-5);
 
-    }).toThrowError("Price is invalid");
-
-
+    }).toThrowError("customer: Price must be greater than zero,");
   });
 
 });

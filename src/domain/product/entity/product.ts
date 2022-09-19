@@ -1,12 +1,12 @@
+import Entity from "../../entity/entity.abstract";
 
-export default class Product {
+export default class Product  extends Entity{
 
-  private _id: string;
   private _name: string;
   private _price: number;
 
   constructor(id: string, name: string, price: number) {
-
+    super();
     this._id = id;
     this._name = name;
     this._price = price;
@@ -27,25 +27,33 @@ export default class Product {
   }
 
   validate() {
-    if (this._id.length === 0) {
-      throw Error("ID is required");
+    if (this.id.length === 0) {
+      this.notification.addError({
+        context: "product",
+        message: "Id is mandatory"
+      })
     }
-
     if (this._name.length === 0) {
-      throw Error("Name is required");
+      this.notification.addError({
+        context: "product",
+        message: "Name is mandatory"
+      })
     }
-
-    if (this._price < 0) {
-      throw Error("Price is invalid");
+    if (this._price <= 0) {
+      this.notification.addError({
+        context: "customer",
+        message: "Price must be greater than zero"
+      })
     }
-    return true;
+    if(this.notification.hasErrors()){
+      throw new Error(this.notification.messages())
+    }
   }
 
   changeName(name: string) {
     this._name = name;
     this.validate();
   }
-
 
   changePrice(price: number): Product {
     this._price = price;
