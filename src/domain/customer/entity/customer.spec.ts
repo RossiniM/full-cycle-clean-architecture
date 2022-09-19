@@ -10,7 +10,7 @@ describe("Customer unit tests", () => {
       const address = new Address("camp noua", 78232, "4545", "CityHall");
       const customer = new Customer("", "Jhon", address);
 
-    }).toThrowError("customer: id is mandatory,");
+    }).toThrowError("customer: Id is mandatory,");
   });
 
 

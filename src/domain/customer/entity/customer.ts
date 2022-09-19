@@ -1,5 +1,6 @@
 import Address from "./adress"
 import Entity from "../../entity/entity.abstract";
+import CustomerValidatorFactory from "../factory/customer.validator.factory";
 
 export default class Customer extends Entity{
 
@@ -33,26 +34,8 @@ export default class Customer extends Entity{
   }
 
   validate() {
-    if (this._name.length === 0) {
-      this.notification.addError({
-        context: "customer",
-        message: "Name is mandatory"
-      })
-    }
+    CustomerValidatorFactory.create().validate(this)
 
-    if (this.id.length === 0) {
-      this.notification.addError({
-        context: "customer",
-        message: "id is mandatory"
-      })
-    }
-
-    if (this._address === undefined) {
-      this.notification.addError({
-        context: "customer",
-        message: "Address is mandatory"
-      })
-    }
     if(this.notification.hasErrors()){
       throw new Error(this.notification.messages())
     }
